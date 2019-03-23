@@ -7,16 +7,9 @@ public class ArrayListBenchmark {
 
     public ArrayList<Pair> arrayList = new ArrayList<Pair>();
 
-    public void FillList(String path) {
-        FileInputStream inputStream = null;
-        try {
-            inputStream = new FileInputStream(path);
-        } catch (FileNotFoundException ex) {
-            System.out.println("Файл не найден");
-            return;
-        }
-
+    public void FillList(FileInputStream inputStream) {
         Scanner sc = new Scanner(inputStream, "UTF-8");
+
         while (sc.hasNext()) {
             String word = sc.next();
             if (word.length() < 3)
