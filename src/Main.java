@@ -14,5 +14,7 @@ public class Main {
         }
         ArrayListBenchmark benchmarkList = new ArrayListBenchmark();
         benchmarkList.Fill(inputStream);
+        System.out.println();
+        TreeSet<Pair> tree = new TreeSet<>();
     }
 }

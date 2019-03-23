@@ -21,7 +21,6 @@ public class ArrayListBenchmark extends Benchmark {
             else
                 arrayList.add(new Pair(word, 1));
         }
-        Collections.sort(arrayList, new SortPair());
     }
 
     public int containsWordAndGetIndex(String word)
@@ -41,10 +40,13 @@ public class ArrayListBenchmark extends Benchmark {
             System.out.println("Введите минимум 3 буквы");
             return;
         }
+        ArrayList<Pair> sortedResult = new ArrayList<>();
         for (Pair p: arrayList)
-        {
             if (p.word.startsWith(prefix))
-                System.out.println(p);
-        }
+                sortedResult.add(p);
+        sortedResult.sort(new SortPair());
+
+        for (Pair p: sortedResult)
+            System.out.println(p);
     }
 }
