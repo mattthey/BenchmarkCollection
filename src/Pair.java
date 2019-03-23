@@ -1,4 +1,4 @@
-public class Pair
+public class Pair implements Comparable
 {
     public Integer countRepetition;
     public String word;
@@ -22,5 +22,13 @@ public class Pair
     @Override
     public String toString() {
         return word + " = " + countRepetition.toString();
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        Pair p = (Pair)o;
+        if (this.countRepetition == p.countRepetition)
+            return this.word.compareTo(p.word);
+        return p.countRepetition - this.countRepetition;
     }
 }
