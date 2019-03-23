@@ -21,15 +21,21 @@ public class ArrayListBenchmark {
             String word = sc.next();
             if (word.length() < 3)
                 continue;
-            if (arrayList.contains(word))
-            {
-                int i = arrayList.indexOf(word);
-                arrayList.get(i).countRepetition += 1;
-            }
+            int index = containsWordAndGetIndex(word);
+            if (index != -1)
+                arrayList.get(index).countRepetition += 1;
             else
-            {
                 arrayList.add(new Pair(word, 1));
-            }
         }
+    }
+
+    public int containsWordAndGetIndex(String word)
+    {
+        for (int i = 0; i < arrayList.size(); i++)
+        {
+            if (arrayList.get(i).word.equals(word))
+                return i;
+        }
+        return -1;
     }
 }
