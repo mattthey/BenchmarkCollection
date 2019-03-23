@@ -18,4 +18,9 @@ public class Pair
             return false;
         }
     }
+
+    @Override
+    public String toString() {
+        return word + " = " + countRepetition.toString();
+    }
 }

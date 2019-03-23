@@ -12,10 +12,7 @@ public class Main {
             System.out.println("Файл не найден");
             return;
         }
-
         ArrayListBenchmark benchmarkList = new ArrayListBenchmark();
-        benchmarkList.FillList(inputStream);
-        int i = benchmarkList.containsWordAndGetIndex("прием");
-        System.out.println(benchmarkList.arrayList.get(i).countRepetition);
+        benchmarkList.Fill(inputStream);
     }
 }

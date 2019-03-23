@@ -6,6 +6,6 @@ public class SortPair implements Comparator<Pair>
     {
         if (a.countRepetition == b.countRepetition)
             return a.word.compareTo(b.word);
-        return a.countRepetition - b.countRepetition;
+        return b.countRepetition - a.countRepetition;
     }
 }
