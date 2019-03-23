@@ -1,10 +1,11 @@
 import java.io.FileInputStream;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Scanner;
 
 public class LinkedListBenchmark extends Benchmark {
-    public LinkedList<Pair> linkedList = new LinkedList<>();
+    public LinkedList<Pair> linkedList = new LinkedList<Pair>();
 
     public void fill(FileInputStream inputStream) {
         Scanner sc = new Scanner(inputStream, "UTF-8");
@@ -23,10 +24,14 @@ public class LinkedListBenchmark extends Benchmark {
 
     public int containsWordAndGetIndex(String word)
     {
-        for (int i = 0; i < linkedList.size(); i++)
+        Iterator iterator = linkedList.iterator();
+        int i = 0;
+        while (iterator.hasNext())
         {
-            if (linkedList.get(i).word.equals(word))
+            Pair p = (Pair)iterator.next();
+            if (p.word.equals(word))
                 return i;
+            i++;
         }
         return -1;
     }
@@ -43,8 +48,8 @@ public class LinkedListBenchmark extends Benchmark {
             if (p.word.startsWith(prefix))
                 sortedResult.add(p);
         sortedResult.sort(new SortPair());
-        
-        for (Pair p: sortedResult)
-            System.out.println(p);
+
+//        for (Pair p: sortedResult)
+//            System.out.println(p);
     }
 }

@@ -8,7 +8,7 @@ public class HashMapBenchmark extends Benchmark {
 
     public HashMap<String, Integer> hashMap = new HashMap<String, Integer>();
 
-    public void Fill(FileInputStream inputStream) {
+    public void fill(FileInputStream inputStream) {
         Scanner sc = new Scanner(inputStream, "UTF-8");
         while (sc.hasNext()) {
             String word = sc.next();

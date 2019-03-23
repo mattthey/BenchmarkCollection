@@ -1,12 +1,21 @@
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.stream.LongStream;
 
 public abstract class Benchmark {
     public abstract void fill(FileInputStream inputStream);
     public abstract void searchByPrefix(String prefix);
 
-    public long doBenchmarkFill(FileInputStream inputStream)
-    {
+    public long doBenchmarkFill(String path) throws Exception {
+
+        FileInputStream inputStream = null;
+        try {
+            inputStream = new FileInputStream(path);
+        } catch (FileNotFoundException ex) {
+            System.out.println("Файл не найден");
+            throw new Exception();
+        }
+
         long[] results = new long[100];
         for (int i = 0; i < 100; i++)
         {

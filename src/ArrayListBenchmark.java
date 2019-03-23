@@ -2,6 +2,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.Scanner;
 
 public class ArrayListBenchmark extends Benchmark {
@@ -25,10 +26,14 @@ public class ArrayListBenchmark extends Benchmark {
 
     public int containsWordAndGetIndex(String word)
     {
-        for (int i = 0; i < arrayList.size(); i++)
+        Iterator iterator = arrayList.iterator();
+        int i = 0;
+        while (iterator.hasNext())
         {
-            if (arrayList.get(i).word.equals(word))
+            Pair p = (Pair)iterator.next();
+            if (p.word.equals(word))
                 return i;
+            i++;
         }
         return -1;
     }
@@ -46,7 +51,7 @@ public class ArrayListBenchmark extends Benchmark {
                 sortedResult.add(p);
         sortedResult.sort(new SortPair());
 
-        for (Pair p: sortedResult)
-            System.out.println(p);
+//        for (Pair p: sortedResult)
+//            System.out.println(p);
     }
 }
