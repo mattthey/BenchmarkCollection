@@ -1,12 +1,11 @@
 import java.io.FileInputStream;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.Scanner;
 
 public class HashMapBenchmark extends Benchmark {
 
-    public HashMap<String, Integer> hashMap = new HashMap<String, Integer>();
+    private HashMap<String, Integer> hashMap = new HashMap<String, Integer>();
 
     public void fill(FileInputStream inputStream) {
         Scanner sc = new Scanner(inputStream, "UTF-8");
@@ -28,13 +27,15 @@ public class HashMapBenchmark extends Benchmark {
             return;
         }
         ArrayList<Pair> sortedResult = new ArrayList<>();
-        for (String key: hashMap.keySet())
-            if (key.startsWith(prefix))
-                sortedResult.add(new Pair(key, hashMap.get(key)));
-        sortedResult.sort(new SortPair());
 
-        for (Pair p: sortedResult)
-            System.out.println(p);
+        for (String key: hashMap.keySet())
+            if (key.startsWith(prefix)) {
+                sortedResult.add(new Pair(key, hashMap.get(key)));
+            }
+
+        sortedResult.sort(new SortPair());
+//        for (Pair p: sortedResult)
+//            System.out.println(p);
 
     }
 }

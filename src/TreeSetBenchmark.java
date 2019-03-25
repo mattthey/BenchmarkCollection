@@ -2,9 +2,11 @@ import java.io.FileInputStream;
 import java.util.TreeSet;
 import java.util.Scanner;
 import java.util.Iterator;
+import java.util.ArrayList;
 
 public class TreeSetBenchmark extends Benchmark {
-    public TreeSet<Pair> treeSet = new TreeSet<>();
+    private TreeSet<Pair> treeSet = new TreeSet<>();
+
     public void fill(FileInputStream inputStream) {
         Scanner sc = new Scanner(inputStream, "UTF-8");
         while (sc.hasNext()) {
@@ -15,7 +17,7 @@ public class TreeSetBenchmark extends Benchmark {
         }
     }
 
-    public void updateOrAdd(String word) {
+    private void updateOrAdd(String word) {
         Iterator iterator = treeSet.iterator();
         while (iterator.hasNext())
         {
@@ -37,13 +39,18 @@ public class TreeSetBenchmark extends Benchmark {
             System.out.println("Введите минимум 3 буквы");
             return;
         }
-//        ArrayList<Pair> sortedResult = new ArrayList<>();
+        ArrayList<Pair> sortedResult = new ArrayList<>();
+
         Iterator iterator = treeSet.iterator();
         while (iterator.hasNext())
         {
             Pair p = (Pair)iterator.next();
             if (p.word.startsWith(prefix))
-                System.out.println(p);
+                sortedResult.add(p);
         }
+
+        sortedResult.sort(new SortPair());
+//        for (Pair p: sortedResult)
+//            System.out.println(p);
     }
 }

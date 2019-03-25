@@ -44,11 +44,20 @@ public class LinkedListBenchmark extends Benchmark {
             return;
         }
         ArrayList<Pair> sortedResult = new ArrayList<>();
-        for (Pair p: linkedList)
+
+        Iterator iterator = linkedList.iterator();
+        while (iterator.hasNext()) {
+            Pair p = (Pair)iterator.next();
             if (p.word.startsWith(prefix))
                 sortedResult.add(p);
+        }
+        /*
+        for (Pair p: linkedList)
+            if (p.word.startsWith(prefix)) {
+                sortedResult.add(p);
+            }
+        */
         sortedResult.sort(new SortPair());
-
 //        for (Pair p: sortedResult)
 //            System.out.println(p);
     }

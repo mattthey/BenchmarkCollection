@@ -12,8 +12,7 @@ public abstract class Benchmark {
         try {
             inputStream = new FileInputStream(path);
         } catch (FileNotFoundException ex) {
-            System.out.println("Файл не найден");
-            throw new Exception();
+            throw new Exception("Файл не найден");
         }
 
         long[] results = new long[100];
