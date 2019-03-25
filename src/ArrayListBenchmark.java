@@ -36,7 +36,7 @@ public class ArrayListBenchmark extends Benchmark {
         return -1;
     }
 
-    public void searchByPrefix(String prefix)
+    public void searchByPrefix(String prefix, boolean print)
     {
         if (prefix.length() < 3)
         {
@@ -51,14 +51,11 @@ public class ArrayListBenchmark extends Benchmark {
             if (p.word.startsWith(prefix))
                 sortedResult.add(p);
         }
-        /*
-        for (Pair p: arrayList)
-            if (p.word.startsWith(prefix)) {
-                sortedResult.add(p);
-            }
-        */
         sortedResult.sort(new SortPair());
-//        for (Pair p: sortedResult)
-//            System.out.println(p);
+        if (print)
+        {
+            for (Pair p: sortedResult)
+                System.out.println(p);
+        }
     }
 }

@@ -33,7 +33,7 @@ public class TreeSetBenchmark extends Benchmark {
         treeSet.add(new Pair(word, 1));
     }
 
-    public void searchByPrefix(String prefix) {
+    public void searchByPrefix(String prefix, boolean print) {
         if (prefix.length() < 3)
         {
             System.out.println("Введите минимум 3 буквы");
@@ -50,7 +50,10 @@ public class TreeSetBenchmark extends Benchmark {
         }
 
         sortedResult.sort(new SortPair());
-//        for (Pair p: sortedResult)
-//            System.out.println(p);
+        if (print)
+        {
+            for (Pair p: sortedResult)
+                System.out.println(p);
+        }
     }
 }
